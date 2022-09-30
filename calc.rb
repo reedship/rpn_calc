@@ -1,12 +1,24 @@
 class Calc
-  attr_accessor :arr
-  def initialize(arr)
+  def initialize()
     @stack = []
-
   end
 
 
   def eval(input_string)
+    # if we are passed a full expression, iterate over the expression as if they are individual cli inputs
+    if input_string.match(/\s/)
+      input_string.split(' ').each do |s|
+        handle_input(s)
+      end
+    else
+      # else handle it as a single input
+      handle_input(input_string)
+    end
+
+    @stack.first
+  end
+
+  def handle_input(input_string)
     case input_string
       # if the item is a number, add it to the stack
     when /\d/
@@ -18,7 +30,7 @@ class Calc
       # '-' => :-
       # '*' => :*
       # REF: https://apidock.com/ruby/Enumerable/reduce
-    when 'exit' || 'close'
+    when 'q' || 'exit' || 'close'
       puts "goodbye"
       exit
     else
@@ -27,6 +39,6 @@ class Calc
       @stack.push(operands.reduce(operator.to_sym))
       puts @stack
     end
-    @stack.first
   end
+
 end
