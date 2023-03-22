@@ -10,7 +10,7 @@ Some basic tests can be ran with `ruby test.rb` from the root folder.
 
 ## Design notes
 
-This was initially a very easy project for me to wrap my head around, however only after 'finishing' the basic implementation did I realise that I had not made a Reverse Polish Notation calculator. I had made something more like a Polish Notation Calculator, backwords. I was calling operands in the wrong order and realised my method of storing both the operators and the operands on the same stack was causing errors.
+This was initially a very easy project for me to wrap my head around, however only after 'finishing' the basic implementation did I realise that I had not made a Reverse Polish Notation calculator. I had made something more like a Polish Notation Calculator, backwards. I was calling operands in the wrong order and realised my method of storing both the operators and the operands on the same stack was causing errors.
 
 I wanted this CLI to be completely in vanilla ruby, without using any external libraries. I wanted the code to be extensible past the initial four operators without much/any refactoring, and using ruby allowed me to use the `array.reduce(operator.to_sym` pattern you see on line 38 of `calc.rb`. Off the top of my head all the basic math operators work as intended this way, so operators like `^` and `**` work as well.
 
